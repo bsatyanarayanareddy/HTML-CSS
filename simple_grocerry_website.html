@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0px;
+            }
+           
+            .header {
+                text-align: center;
+                vertical-align: middle;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 50px; 
+                background-color: #333;
+                color: white;
+                padding-top: 30px;
+                font-size: 30px;
+                    }
+
+.main{
+    margin-top: 80px;
+    display: flex;
+}
+.left{
+    width: 10%;
+
+}
+.leftele{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 40px;
+    background-color: aquamarine;
+    position: sticky;
+    top:0px;
+    flex-shrink: 0;
+    left:0px;
+    
+}
+.right  {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 50px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.check{
+    border: 1px solid black;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    height: 350px;
+    box-shadow: 5px 5px rgb(95, 93, 93);
+}
+div img{
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+}
+button{
+    background-color: chartreuse;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="header" >welcome to my groccery website </div>
+        <div class="main">
+            <div class="left">
+                <div class="leftele">
+                    profile
+                </div>
+                <div class="leftele">
+                    orders
+                </div>
+                <div class="leftele">
+                    cart
+                </div>
+                <div class="leftele">
+                    log out
+                </div>
+            </div>
+            <div class="right">
+                    <div class="check">
+                        <img src="avacado.jpeg" alt="avacado">
+                        <p>item-name: Avacado  <br>
+                             price:100/kg
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+                    <div class="check">
+                        <img src="mirchi.jpeg" alt="mirchi">
+                        <p>item-name: Mirchi <br>
+                             price:50/kg
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+                    <div class="check">
+                        <img src="tomato.jpeg" alt="tomato">
+                        <p>item-name: Tomato <br>
+                             price:50/kg
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+                    <div class="check">
+                        <img src="velveeta.jpeg" alt="velveet">
+                        <p>item-name: Velveet <br>
+                             price:200/unit
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+                    <div class="check">
+                        <img src="watermelon.jpeg" alt="watermelon">
+                        <p>item-name: Watermelon <br>
+                             price:20/kg
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+                    <div class="check">
+                        <img src="pine apple.jpeg" alt="pineapple">
+                        <p>item-name: Pine Apple <br>
+                             price:80/kg
+                        </p>
+                        <button>add to cart</button>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>
