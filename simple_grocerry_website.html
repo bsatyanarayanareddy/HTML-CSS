@@ -26,6 +26,7 @@
 }
 .left{
     width: 10%;
+    height: auto ;
 
 }
 .leftele{
@@ -41,6 +42,10 @@
     left:0px;
     
 }
+.leftele:hover{
+        background-color: blue;
+        cursor: grabbing;
+}
 .right  {
     width: 80%;
     display: grid;
@@ -50,23 +55,33 @@
     margin-top: 30px;
 }
 .check{
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
+    width: 300px;
     border-radius: 15px;
-    text-align: center;
+    align-items: center;
+    justify-content: space-around;
     font-weight: bold;
-    height: 350px;
+    height: 300px;
     box-shadow: 5px 5px rgb(95, 93, 93);
 }
 div img{
     width: 100%;
     height: 200px;
-    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 button{
     background-color: chartreuse;
     width: 50%;
     height: 40px;
     border-radius: 10px;
+    
+}
+button:hover{
+    background-color: aquamarine;
+    cursor:pointer;
 }
         </style>
     </head>
