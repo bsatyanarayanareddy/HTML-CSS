@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            header{
+                display: flex;
+                width: 100%;
+               
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                transition: transform 2s;
+                transform: rotateX(30deg);
+            }
+            header:hover{
+                transform : rotateX(340deg);
+            }
+
+           
+                ul{
+                    background-color: rgb(9, 9, 9);
+                    width: 100%;
+                    overflow: hidden;
+                    margin: 0;
+
+                }
+                li{
+                    float: left;
+                    list-style-type: none;
+                    padding: 10px;
+                    border-right: 2px solid black;
+                   margin-left: 0px;
+                    
+                    
+                }
+                a{
+                    text-decoration: none;
+                    color: hsl(0, 27%, 98%);
+                }
+                body{
+                    margin:0px;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    overflow-x: hidden;
+                   
+                }
+                .main{
+                    margin-left: 100px;
+                    margin-right: 100px;
+                    border-top: 1px solid black;
+                }
+                .first{
+                    text-align: justify;
+                }
+                
+                .quote{
+                    text-align: center;
+                }
+                .spec{
+                    transition:  transform 3s ;
+                }
+                .spec:hover{
+                   
+                    transform: scalex(2);
+                    transform: rotate(360deg);
+                }
+                #mail{
+                    color: black;
+                }
+                .last{
+                    width: 200px;
+                    height: 300px;
+                    border: 2px solid black;
+                    position: relative;
+                    left: 100px;
+                    transition: transform 3s;
+                    background-color: aqua;
+                }
+                .last:hover{
+                    transform: scaleX(2);
+                }
+                
+        </style>
+
+    </head>
+    <body>
+        <div>
+        <header> <h1>Satya Narayana - Web Devoloper</h1></header>
+            </div>
+            <div>
+        <ul>
+            <li><a href="#">Home </a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li style="float: right; margin-right:40px; border-left: 2px solid black;"><a href="#contact" >Contact</a></li>
+        </ul>
+        </div>
+        <div class="quote"><h1 class="spec"> I Don't Just Write Code, I Build Experiences</h1></div>
+        <div class="main">
+            <div class="container" >
+                <h1 style="text-align: left;" id="about">About me</h1>
+            <div class="first"><h3>Hi, I'm Satya Narayana Reddy, a web developer who is genuinely excited about the power of the web to connect, entertain, and empower. I love to learn, and I'm constantly exploring new technologies and techniques to push the boundaries of what's possible. From crafting pixel-perfect front-end interfaces to architecting robust back-end systems, I pour my energy and enthusiasm into every project. I am eager to join a forward-thinking company where I can collaborate with other passionate developers and make a real impact.</h3></div>
+            </div>
+            <h1 id="projects">Projects</h1>
+            <div style="border-top: 1px solid black;">
+                <div style="border: 1px solid black; margin-bottom:20px">
+                <h2>Project 1: Smart Traffic Management System</h2>
+                <p>The Smart Traffic Management System is an intelligent solution designed to monitor and regulate traffic flow using automated decision-making. It utilizes real-time data from sensors or simulated inputs to dynamically manage signal timings and reduce congestion.</p>
+               <a href="#" style="color:rgb(41, 15, 193);">View Source Code</a> </div>
+                <div style="border: 1px solid black;">
+                <h2>Project 2: Essential Voice Delivery</h2>
+                <p>The Essential Voice Delivery System is designed to help unlettered individuals interact with digital systems through voice-based commands. It uses speech recognition to take input and text-to-speech (TTS) to provide responses — making it accessible for people who may not be able to read or write.</p>
+                    <a href="#" style="color:rgb(41, 15, 193);">View Source Code</a></div>
+            </div>
+            <h1 id="contact">Contact Me</h1>
+            <p><a id="mail" href="mailto:snr27690@gmail.com">E-Mail : snr276990@gmail.com</a> | phone : 8639596482</p>
+        </div>
+        <div class="last">
+
+        </div>
+    </body>
+</html>
