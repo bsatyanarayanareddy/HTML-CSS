@@ -1,0 +1,156 @@
+<html>
+    <head>
+<style>
+    .total{
+        margin: 50px;
+        width: 200px;
+        height: 300px;
+        border: 2px solid black;
+        background-color: antiquewhite;
+        position: relative;
+    }
+    .left{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            border: 2px solid rgb(251, 249, 249);
+            border-radius: 30px;
+            top: 40px;
+            left: 40px;
+            background-color: white;
+    }
+    .right{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            border: 2px solid rgb(247, 245, 245);
+            border-radius: 30px;
+            top: 40px;
+            left: 90px;
+            background-color: white;
+    }
+    .lefteye{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border: 2px solid black;
+            border-radius: 18px;
+            top: 20px;
+            left: 20px;
+            background-color: black;
+    }
+    .righteye{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border: 2px solid black;
+            border-radius: 25px;
+            top: 20px;
+            left: 23px;
+            background-color: black;
+    }
+    .body{
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 50px;
+            top: 90px;
+            left: 35px;
+            background-color: white;
+    }
+    .nose{
+        position: absolute;
+        top :90px;
+        left: 84px;
+        z-index: 1;
+    }
+    .leftleg{
+        position: absolute;
+        width: 20px;
+        border: 2px solid black;
+        transform: rotate(90deg);
+        top: 222px;
+        left: 60px;
+    }
+    .rightleg{
+        position: absolute;
+        width: 20px;
+        border: 2px solid black;
+        transform: rotate(90deg);
+        top: 222px;
+        left: 100px;
+        
+    }
+    .leftfoot{
+        position: absolute;
+        top: 310px;
+        left: 13px;
+        transform: rotate(20deg);
+    }
+    .rightfoot{
+        position: absolute;
+        top: 310px;
+        left: 54px;
+        transform: rotate(20deg);
+    }
+    .righthand{
+        position: absolute;
+        top: 260px;
+        left: 28px;
+        transform: rotate(40deg);
+    }
+    .lefthand{
+        position: absolute;
+        top: -20px;
+        left: -4px;
+        transform: rotate(-40deg);
+    }
+    
+</style>
+</head>
+<html>
+<body>
+    
+
+<div class="total">
+    <div class="left">
+        <div class="lefteye"></div>
+    </div>
+    <div class="right">
+        <div class="righteye"></div>
+    </div>
+    <div class="nose">
+        <svg >
+            <polygon points="0,2 30,2 15,20" style="fill:rgb(1, 20, 1);stroke:rgb(8, 8, 8);stroke-width:1" />
+        </svg>
+     </div>
+    <div class="body"></div>
+    <div class="leftleg">
+        
+    </div>
+    <div class="rightleg"></div>
+    <div class="leftfoot">
+       <svg height="200" width="500">
+            <polygon points="10,1 15,19 5,19" style="fill:rgb(1, 20, 1);stroke:rgb(8, 8, 8);stroke-width:3" />
+        </svg>
+    </div>
+    <div class="rightfoot">
+       <svg height="200" width="500">
+            <polygon points="10,1 15,19 5,19" style="fill:rgb(1, 20, 1);stroke:rgb(8, 8, 8);stroke-width:3" />
+        </svg>
+    </div>
+    <div class="lefthand">
+        <svg height="200" width="500">
+            <polygon points="10,1 60,1 30,10" style="fill:rgb(1, 20, 1);stroke:rgb(8, 8, 8);stroke-width:3" />
+        </svg>
+    </div>
+    <div class="righthand">
+       <svg height="200" width="500">
+            <polygon points="10,1 60,1 30,10" style="fill:rgb(1, 20, 1);stroke:rgb(8, 8, 8);stroke-width:3" />
+        </svg>
+    </div>
+    
+</div>
+</body>
+</html>
