@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read and Print Name</title>
+    <style>
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 16px;
+            margin-top: 10px;
+            align-content: center;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(153, 255, 0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Input field -->
+    <input type="text" id="nameInput" placeholder="Enter your name"><br>
+    <input type="text" id="ageInput" placeholder="Enter your age"><br>
+    <input type="text" id="cityInput" placeholder="Enter your city"><br>
+    <input type="tel" name="phone" id="phone" placeholder="Enter your phone number"><br>
+    <!-- Button -->
+    <button onclick="printName()">Submit</button>
+
+    <!-- Output paragraph -->
+    <p id="output"></p>
+
+    <script>
+        function printName() {
+            // Read value from input
+            let name = document.getElementById("nameInput").value;
+            let age = document.getElementById("ageInput").value;
+            let city = document.getElementById("cityInput").value;
+            let phone = document.getElementById("phone").value;
+            // Print it inside the <p> tag
+            document.getElementById("output").innerHTML = "Your name is: " + name +"<br>" + "Your age is: " + age + "<br>" + "Your city is: " + city + "<br>" + "Your phone number is: " + phone;
+        }
+    </script>
+</body>
+</html>

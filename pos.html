@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .parent{
+                position:relative;
+                width: 300px;
+                height: 500px;
+                z-index: 1;
+                border: 5px solid grey;
+                overflow: scroll;
+            }
+            .pos{
+                font-size: 100px;
+                border: 5px solid red;
+                background-color: aqua;
+                width: 30%;
+                position: sticky;
+                bottom: 20px;
+                left: 50px;
+                z-index: -1;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>plain text</h1>
+        <p>In computing, plain text is a loose term for data (e.g. file contents) that represent only characters of readable material but not its graphical representation nor other objects (floating-point numbers, images, etc.). It may also include a limited number of "whitespace" characters that affect simple arrangement of text, such as spaces, line breaks, or tabulation characters. Plain text is different from formatted text, where style information is included; from structured text, where structural parts of the document such as paragraphs, sections, and the like are identified; and from binary files in which some portions must be interpreted as binary objects (encoded integers, real numbers, images, etc.).</p>
+    
+    <h1>Plain text and rich text</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci repellendus natus officia sequi deserunt consectetur, inventore asperiores, magni quasi sint dignissimos quisquam optio, reprehenderit voluptatum! Voluptate ipsa voluptatum voluptates assumenda.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam velit reprehenderit et pariatur quos, consequuntur rerum nemo facere ducimus maxime fugit expedita, molestiae cupiditate labore qui. Dolor maxime sunt iure.</p>
+<p>According to The Unicode Standard:[1]
+
+"Plain text is a pure sequence of character codes; plain Un-encoded text is therefore a sequence of Unicode character codes.
+In contrast, styled text, also known as rich text, is any text representation containing plain text plus added information such as a language identifier, font size, color, hypertext links, and so on.
+SGML, RTF, HTML, XML, and TeX are examples of rich text fully represented as plain text streams, interspersing plain text data with sequences of characters that represent the additional data structures."
+</p>
+<h1>Usage</h1>
+<p class="parent"> 
+A comment, a ".txt" file, or a TXT Record generally contains only plain text (without formatting) intended for humans to read.
+
+The best format for storing knowledge persistently is plain text, rather than some binary format.[2]
+
+Encoding
+Character encodings
+
+This section does not cite any sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed. (December 2023) (Learn how and when to remove this message)
+Main article: Character encoding
+Before the early 1960s, computers were mainly used for number-crunching rather than for text, and memory was extremely expensive. Computers often allocated only 6 bits for each character, permitting only 64 characters—assigning codes for A-Z, a-z, and 0-9 would leave only 2 codes: nowhere near enough. Most computers opted not to support lower-case letters. Thus, early text projects such as Roberto Busa's Index Thomisticus, the Brown Corpus, and others had to resort to conventions such as keying an asterisk preceding letters actually intended to be upper-case.
+
+Fred Brooks of IBM argued strongly for going to 8-bit bytes, because someday people might want to process text, and won. Although IBM used EBCDIC, most text from then on came to be encoded in ASCII, using values from 0 to 31 for (non-printing) control characters, and values from 32 to 127 for graphic characters such as letters, digits, and punctuation. Most machines stored characters in 8 bits rather than 7, ignoring the remaining bit or using it as a checksum.
+
+The near-ubiquity of ASCII was a great help, but failed to address international and linguistic concerns. The dollar-sign ("$") was not as useful in England, and the accented characters used in Spanish, French, German, Portuguese, Italian and many other languages were entirely unavailable in ASCII (not to mention characters used in Greek, Russian, and most Eastern languages). Many individuals, companies, and countries defined extra characters as needed—often reassigning control characters, or using values in the range from 128 to 255. Using values above 128 conflicts with using the 8th bit as a checksum, but the checksum usage gradually died out.
+
+These additional characters were encoded differently in different countries, making texts impossible to decode without figuring out the originator's rules. For instance, a browser might display ¬A rather than ` if it tried to interpret one character set as another. The International Organization for Standardization (ISO) eventually developed several code pages under ISO 8859, to accommodate various languages. The first of these (ISO 8859-1) is also known as "Latin-1", and covers the needs of most (not all) European languages that use Latin-based characters (there was not quite enough room to cover them all). ISO 2022 then provided conventions for "switching" between different character sets in mid-file. Many other organisations developed variations on these, and for many years Windows and Macintosh computers used incompatible variations.
+
+The text-encoding situation became more and more complex, leading to efforts by ISO and by the Unicode Consortium to develop a single, unified character encoding that could cover all known (or at least all currently known) languages. After some conflict,[3] these efforts were unified. Unicode currently allows for 1,114,112 code values, and assigns codes covering nearly all modern text writing systems, as well as many historical ones, and for many non-linguistic characters such as printer's dingbats, mathematical symbols, etc.
+
+Text is considered plain text regardless of its encoding. To properly understand or process it the recipient must know (or be able to figure out) what encoding was used; however, they need not know anything about the computer architecture that was used, or about the binary structures defined by whatever program (if any) created the data.
+
+Perhaps the most common way of explicitly stating the specific encoding of plain text is with a MIME type. For email and HTTP, the default MIME type is "text/plain" -- plain text without markup. Another MIME type often used in both email and HTTP is "text/html; charset=UTF-8" -- plain text represented using the UTF-8 character encoding with HTML markup. Another common MIME type is "application/json" -- plain text represented using the UTF-8 character encoding with JSON markup.
+
+When a document is received without any explicit indication of the character encoding, some applications use charset detection to attempt to guess what encoding was used.
+
+Control codes
+Main article: C0 and C1 control codes
+ASCII reserves the first 32 codes (numbers 0–31 decimal) for control characters known as the "C0 set": codes originally intended not to represent printable information, but rather to control devices (such as printers) that make use of ASCII, or to provide meta-information about data streams such as those stored on magnetic tape. They include common characters like the newline and the tab character.
+
+In 8-bit character sets such as Latin-1 and the other ISO 8859 sets, the first 32 characters of the "upper half" (128 to 159) are also control codes, known as the "C1 set". They are rarely used directly; when they turn up in documents which are ostensibly in an ISO 8859 encoding, their code positions generally refer instead to the characters at that position in a proprietary, system-specific encoding, such as Windows-1252 or Mac OS Roman, that use the codes to instead provide additional graphic characters.
+
+Main article: Unicode control characters
+Unicode defines additional control characters, including bi-directional text direction override characters (used to explicitly mark right-to-left writing inside left-to-right writing and the other way around) and variation selectors to select alternate forms of CJK ideographs, emoji and other characters.</p>
+<div class="pos"> position </div>
+<h1>References</h1>
+<p> "The Unicode Standard, version 14.0" (PDF). pp. 18–19.
+ Andrew Hunt, David Thomas. "The Pragmatic Programmer". 1999. Chapter 14: "The Power of Plain Text". p. 73.
+ "ISO/Unicode Merger: Ed Hart Memo". www.unicode.org. Retrieved 2024-10-21.
+vte
+Data types
+Uninterpreted	
+BitByteTritTryteWordBit array
+Numeric	
+Arbitrary-precision or bignumComplexDecimalFixed pointBlock floating pointFloating point Reduced precision MinifloatHalf precisionbfloat16Single precisionDouble precisionQuadruple precisionOctuple precisionExtended precision Long doubleInteger signednessIntervalRational
+Pointer	
+Address physicalvirtualReference
+Text	
+CharacterString null-terminated
+Composite	
+Algebraic data type generalizedArrayAssociative arrayClassDependentEqualityInductiveIntersectionListObject metaobjectOption typeProductRecord or StructRefinementSetUnion tagged
+Other	
+BooleanBottom typeCollectionEnumerated typeExceptionFunction typeOpaque data typeRecursive data typeSemaphoreStreamStrongly typed identifierTop typeType classEmpty typeUnit typeVoid
+Related
+topics	
+Abstract data typeBoxingData structureGenericKind metaclassParametric polymorphismPrimitive data typeInterfaceSubtypingType constructorType conversionType systemType theoryVariable
+Categories: Text file formatsOpen formats</p>
+<pre>Welcome to Paste Plain Text! This webpage allows you to copy and paste text without formatting. You can convert your clipboard content to plain text without formatting by pasting your text below, and then copy the plain text to your clipboard.
+
+
+Paste your text here
+Copy Plain Text to Clipboard
+
+
+Frequently Asked Questions
+Why paste plain text without formatting?
+Plain text without formatting is useful when you want to remove any styling or formatting from the text. It's commonly used when copying content from one application to another, ensuring the text appears consistent across different platforms or software.
+
+Does Paste Plain Text work on both a Mac and PC?
+Yes, Paste Plain Text works on both Mac and PC. It is a web-based application and can be accessed from any modern web browser on various operating systems.
+
+Are there other ways to paste plain text without formatting?
+Yes, there are other methods to paste plain text without formatting, such as using keyboard shortcuts like Ctrl+Shift+V or using dedicated applications or tools that specialize in plain text conversion.
+
+Are numbers, bullets, and tabs copied over to the plain text?
+When pasting plain text, numbers, bullets, and tabs are typically preserved, but any associated styling or formatting may be removed. The resulting plain text will include the content without the original formatting.
+
+Can I paste rich text from anywhere?
+Yes, you can paste rich text from various sources such as websites, documents, emails, or any other application that supports copying text. The web app will convert the rich text into plain text for you.
+
+After pasting the text here, can I edit the text in the box and then copy the edited plain text?
+Yes, after pasting the text into the box, you can edit the content as needed. Once you're done editing, you can click the "Copy Plain Text to Clipboard" button to copy the edited plain text to your clipboard.
+
+Does this work with Word, Outlook, Google Docs, etc?
+Paste Plain Text can be used with various applications, including Word, Outlook, Google Docs, and others. You can copy the desired rich text from these applications and paste it into the web app to convert it to plain text.
+
+Does my pasted text get stored anywhere?
+No, Paste Plain Text does not store or retain any of the pasted text. The conversion process happens locally on your device, and the text is copied to your clipboard without being stored on any serv</pre>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LM Studio — Simple Chat UI</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#94a3b8;--bubble:#111827}
+    body{font-family:Inter,ui-sans-serif,system-ui,Arial;margin:0;background:linear-gradient(180deg,#031124 0%, #071029 100%);color:#e6eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .app{width:900px;max-width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);overflow:hidden}
+    .header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#2563eb);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .title{font-size:18px}
+    .controls{display:flex;gap:10px;margin-left:auto;align-items:center}
+    .controls input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;color:inherit}
+    .body{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px}
+    .chat{background:transparent;padding:14px;border-radius:8px;min-height:520px;max-height:72vh;overflow:auto}
+    .side{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+    .msg{display:flex;margin:10px 0}
+    .msg .bubble{max-width:76%;padding:12px 14px;border-radius:12px;line-height:1.4}
+    .user{justify-content:flex-end}
+    .user .bubble{background:linear-gradient(180deg,#1f2937,#111827);border:1px solid rgba(255,255,255,0.03)}
+    .assistant .bubble{background:linear-gradient(180deg,#07102a,#08122f);border:1px solid rgba(255,255,255,0.03)}
+    .meta{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .inputBox{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,0.03)}
+    textarea{flex:1;min-height:56px;max-height:160px;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;color:inherit}
+    button{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;color:white;cursor:pointer}
+    .small{font-size:13px;color:var(--muted)}
+    .note{font-size:12px;color:var(--muted);margin-top:8px}
+    .status{font-size:13px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02)}
+    .error{color:#ffb4b4}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <div class="logo">LM</div>
+      <div>
+        <div class="title">LM Studio — Local Chat UI</div>
+        <div class="small">Connects to an LM Studio OpenAI‑compatible API</div>
+      </div>
+
+      <div class="controls">
+        <input id="serverUrl" placeholder="Server URL (http://localhost:1234)" style="width:340px" value="http://localhost:1234" />
+        <input id="modelName" placeholder="Model name (e.g. llama-2-7b-chat)" style="width:220px" value="TheBloke/Llama-2-7B-Chat-GGUF" />
+        <input id="authToken" placeholder="Auth token (default: lm-studio)" style="width:180px" value="lm-studio" />
+        <div id="status" class="status">Not connected</div>
+      </div>
+    </div>
+
+    <div class="body">
+      <div>
+        <div class="chat" id="chatArea">
+          <div class="meta">Tip: change the Server URL / Model name above. If you see CORS errors in the browser, use a backend proxy for production.</div>
+        </div>
+
+        <div class="inputBox">
+          <textarea id="userInput" placeholder="Type your message here..."></textarea>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button id="sendBtn">Send</button>
+            <button id="clearBtn" style="background:#334155">Clear</button>
+            <button id="testBtn" style="background:#0ea5e9">Test</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>Conversation</strong>
+          <span class="small">Local only</span>
+        </div>
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:10px 0" />
+        <div class="note">Server responses will appear here. Use <strong>Test</strong> to verify connectivity without sending a user chat.</div>
+
+        <div style="margin-top:12px">
+          <label class="small">Max tokens</label>
+          <input id="maxTokens" value="512" style="width:100%" />
+        </div>
+
+        <div style="margin-top:12px">
+          <label class="small">Temperature (0-1)</label>
+          <input id="temperature" value="0.2" style="width:100%" />
+        </div>
+
+        <div style="margin-top:12px">
+          <label class="small">Top_p</label>
+          <input id="topP" value="0.9" style="width:100%" />
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+          <input type="checkbox" id="showRaw" /> <label for="showRaw" class="small">Show raw JSON</label>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="small">Logs</div>
+          <pre id="logArea" style="max-height:260px;overflow:auto;background:#020617;padding:8px;border-radius:8px;font-size:12px;color:#9fb4d6"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatArea = document.getElementById('chatArea');
+    const sendBtn = document.getElementById('sendBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const testBtn = document.getElementById('testBtn');
+    const userInput = document.getElementById('userInput');
+    const serverUrlInput = document.getElementById('serverUrl');
+    const modelNameInput = document.getElementById('modelName');
+    const authTokenInput = document.getElementById('authToken');
+    const statusEl = document.getElementById('status');
+    const logArea = document.getElementById('logArea');
+
+    function log(msg){
+      const time = new Date().toLocaleTimeString();
+      logArea.textContent = `[${time}] ${msg}\n` + logArea.textContent;
+    }
+
+    function appendMessage(role, text){
+      const wrapper = document.createElement('div');
+      wrapper.className = 'msg ' + (role === 'user' ? 'user' : 'assistant');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.textContent = text;
+      wrapper.appendChild(bubble);
+      chatArea.appendChild(wrapper);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    async function callLMStudio(payload){
+      const serverUrl = serverUrlInput.value.trim().replace(/\/+$/,'');
+      const auth = authTokenInput.value.trim() || 'lm-studio';
+      const url = serverUrl + '/v1/chat/completions';
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + auth
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if(!res.ok){
+        const text = await res.text();
+        throw new Error(`HTTP ${res.status}: ${text}`);
+      }
+      return await res.json();
+    }
+
+    sendBtn.addEventListener('click', async ()=>{
+      const content = userInput.value.trim();
+      if(!content){ alert('Please type a message!'); return; }
+      appendMessage('user', content);
+      userInput.value = '';
+
+      const model = modelNameInput.value.trim() || 'your-model-name';
+      const max_tokens = parseInt(document.getElementById('maxTokens').value) || 512;
+      const temperature = parseFloat(document.getElementById('temperature').value) || 0.2;
+      const top_p = parseFloat(document.getElementById('topP').value) || 0.9;
+
+      const payload = { model, messages:[{role:'user', content}], max_tokens, temperature, top_p };
+
+      statusEl.textContent = 'Waiting for response...';
+      log('Sending request to ' + serverUrlInput.value);
+
+      try{
+        const data = await callLMStudio(payload);
+        const showRaw = document.getElementById('showRaw').checked;
+        const text = showRaw ? JSON.stringify(data, null, 2) : (data.choices[0].message.content || '');
+        appendMessage('assistant', text);
+        statusEl.textContent = 'Connected';
+        log('Response received');
+      }catch(err){
+        console.error(err);
+        appendMessage('assistant', 'Error: ' + err.message);
+        statusEl.textContent = 'Error';
+        log('Error: ' + err.message);
+      }
+    });
+
+    clearBtn.addEventListener('click', ()=>{ chatArea.innerHTML = '<div class="meta">Tip: change the Server URL / Model name above. If you see CORS errors, use a backend proxy.</div>'; log('Chat cleared'); });
+
+    testBtn.addEventListener('click', async ()=>{
+      const model = modelNameInput.value.trim() || 'your-model-name';
+      const payload = { model, messages: [
+  { role: 'system', content: 'You are a helpful assistant.' },
+  { role: 'user', content }
+], max_tokens:8 };
+      statusEl.textContent = 'Testing...';
+      try{
+        const data = await callLMStudio(payload);
+        appendMessage('assistant', data.choices[0].message.content || 'OK');
+        statusEl.textContent = 'Connected';
+        log('Test OK');
+      }catch(err){
+        appendMessage('assistant','Test failed: '+err.message);
+        statusEl.textContent = 'Error';
+        log('Test failed: '+err.message);
+      }
+    });
+
+    userInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){ sendBtn.click(); } });
+  </script>
+</body>
+</html>

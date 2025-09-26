@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .menu{
+                border:1px solid black;
+                width: 30px;
+                height: 17px;
+                border-radius: 4px;
+                position: relative;
+            }
+            .insideone{
+                width: 25px;
+                height: 2px;
+                background-color: #110b0b;
+                position: absolute;
+                top: 3px;
+                left: 2px;
+            }
+            .insidesecond{
+               width: 25px;
+                height: 2px;
+                background-color: #110b0b;
+                position: absolute;
+                top: 7px;
+                left: 2px;
+            }
+            .insidethird{
+                width: 25px;
+                height: 2px;
+                background-color: #110b0b;
+                position: absolute;
+                top: 11px;
+                left: 2px;
+            }
+            .main{
+                position: absolute;
+                top: 0px;
+                left: 30px;
+                width: 100%;
+                height: 100px;
+                background-color: #f0f0f0;
+                transition: widht 3s ease;
+                display: none;
+            }
+            .menu:hover .main{
+                display: block;
+                width:40px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Expand the menu </h1>
+        <p>Click the button below to expand the menu.</p>
+        <div class="menu">
+            <div class="insideone">   
+            </div>
+            <div class="insidesecond"></div>
+            <div class="insidethird"></div>
+            <div class="main">
+                <button>profile</button>
+                <button>history</button>
+                <button>logout</button>
+            </div>
+        </div>
+    </body>
+</html>

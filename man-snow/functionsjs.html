@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p id = "demo">satyana </p>
+        <button onclick="document.getElementById('demo').innerHTML = 'multiplication is :'+res(2,3)">click me</button>
+        <script>
+            function myFunction(){
+                let text = "Hello World";
+                let result = text.fontcolor("red");
+                document.getElementById("demo").innerHTML = result;
+            }
+            function res(a,b){
+                return a*b;
+            }
+            //expression function
+            const x = function(a,b){return a*b};
+            document.write(x(4,5));
+            //function constructor
+            const val = new Function("a","b","return a*b");
+            document.write("<br>");
+            document.write(val(6,7));
+            //function hoisting 
+            document.write("<br>");
+            hoist();
+            function hoist(){
+                document.write("function hoisting");
+            }
+            //functions can be used as values
+            document.write("<br>");
+            function sum(a,b){
+                return a+b;
+            }
+            let z = sum(2,3) + 5;
+            document.write("value of z ="+z);
+            //functions are objects
+            document.write("<br>");
+            document.write(typeof sum); //fucntion
+            document.write("<br>");
+            document.write(sum instanceof Function); //true
+            document.write("<br>");
+            //argumetns.length
+            function arg(){
+                let sum = 0;
+                for(let i=0;i<arguments.length;i++){
+                    sum+= arguments[i];
+                }
+                return sum;
+            }
+
+            document.write(arg(1,2,3,4,5));
+            const str = arg.toString();
+            document.write("<br>");
+            document.write(str);
+            document.write("<br>"); 
+            document.write(str.length);
+            //arrow function
+            document.write("<br>");
+            const arrow = (a,b) => a*b;
+            document.write(arrow(8,9));
+            document.write("<br>");
+            const arrow1 = a => a*2;
+            document.write(arrow1(4));
+            document.write("<br>");
+            //arrow with parameter
+            const arrow2 = (val)=>{
+                val+=5;
+                return val;
+            }
+            document.write(arrow2(10));
+            //function rest as parameter
+            document.write("<br>");
+            function rest(...args){
+                let sum = 0;
+                for(let i=0;i<args.length;i++){
+                    sum+= args[i];
+                }
+                return sum;
+            }
+            document.write(rest(1,2,3,4,5,6,7,8,9,10));
+            //argument object
+            document.write("<br>");
+            function arg1(){
+                let sum = 0;
+                for(let i=0;i<arguments.length;i++){
+                    sum+= arguments[i];
+                }
+                return sum;
+            }
+            document.write(arg1(1,2,3,4,5,6,7,8,9,10)); //55
+            //invoking function as method
+            document.write("<br>");
+            const obj = {
+                values: [1,2,3,4,5],
+                sum: function(){
+                    return arg1.apply(null,this.values);
+                }
+            };
+            document.write(obj.sum());
+            //invoking function as constructor
+            document.write("<br>");
+            function Person(firstname,lastname,age){
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.age = age;
+            }
+            const person1 = new Person("satya","narayana",20);
+            document.write(person1.firstname+" "+person1.lastname+" "+person1.age);
+            //invoking function as method
+            document.write("<br>");
+            const myobj ={
+                firstname:"satya",
+                lastname:"narayana",
+                fullname: function(){
+                    return this.firstname+" "+this.lastname;
+                }
+            }
+            document.write(myobj.fullname());
+            //call() method
+            document.write("<br>");
+            const person2 = {
+                fullname: function(city,country){
+                    return this.firstname+" "+this.lastname+" ,"+city+" ,"+country;
+                }
+            }
+            const person3 = {
+                firstname:"satya",
+                lastname:"narayana"
+            }
+            document.write(person2.fullname.call(person3,"guntur","india"));
+            //apply() method
+            document.write("<br>");
+            document.write(person2.fullname.apply(person3,["guntur","india"]));
+            //bind() method
+            document.write("<br>");
+            const bind = person2.fullname.bind(person3);
+            document.write(bind("guntur","india"));
+
+        </script>
+    </body>
+</html>

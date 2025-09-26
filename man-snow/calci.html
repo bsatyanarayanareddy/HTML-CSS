@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <style>
+                button{
+                    padding : 10px;
+                    width: 200px;
+                }
+            </style>
+    </head>
+    <body>
+        
+        <p id="demo" >fristname is :</p>
+        <input type="text" name="text" id="text" placeholder="Enter your text"><br>
+        <button onclick="check()" value="submit">button</button>
+        <script>
+            console.log("Hello World");
+            function check(){
+                const object  = {
+                    firstname:"satya",
+                    lastname:"narayana",
+                    age:20
+                }
+                document.getElementById("demo").innerText = object("firstname");
+                let text = document.getElementById("text").value;
+                let n = text.length;
+                if(n%2==0){
+                    window.alert(text+" length is Even");
+                }
+                else{
+                    window.alert(text+ " length is Odd");
+                }
+            }
+        </script>
+    </body>
+</html>

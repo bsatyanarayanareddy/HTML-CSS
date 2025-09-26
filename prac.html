@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* HEADER styles (unchanged) */
+  a {
+    border: 2px solid white;
+    background-color: black;
+    color: aliceblue;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    border: 1px solid rgb(230, 227, 227);
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  a.normal:hover {
+    text-decoration: none;
+  }
+  a.color:hover {
+    color: rgb(161, 17, 48);
+  }
+  a.font:hover {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  a.fontsize:hover {
+    font-size: large;
+  }
+  a:focus {
+    outline: 2px solid orange;
+  }
+
+  header {
+    background-color: black;
+    padding: 10px;
+  }
+
+  body {
+    margin: 0;
+    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Container for both cards */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    gap: 40px;
+  }
+
+  /* Common card style */
+  .card {
+    border-radius: 25px;
+    width: 300px;
+    padding: 30px 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+
+  .card.signup {
+    background-color: #0073cf;
+    color: white;
+  }
+
+  .card h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card input[type="text"],
+  .card input[type="email"],
+  .card input[type="password"],
+  .card input[type="tel"],
+  .card input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    color: inherit;
+  }
+
+  .card input::placeholder {
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .card.login .login-btn {
+    background-color: #0073cf;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+
+  .card.login a.forgot {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: #0073cf;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .card.signup .signup-btn {
+    background-color: white;
+    color: #0073cf;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  /* Circle icon for login */
+  .avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #0073cf;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar::before {
+    content: "👤";
+    font-size: 40px;
+    color: white;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <a href="default.com" class="normal">Home</a>
+    <a href="default.com" class="color">About</a>
+    <a href="default.com" class="font">Services</a>
+    <a href="default.com" class="fontsize">Contact</a>
+  </header>
+
+  <div class="container">
+    <!-- Login Card -->
+    <div class="card login">
+      <div class="avatar"></div>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <label class="remember">
+        <input type="checkbox" style="margin-right: 8px;"> Remember me
+      </label>
+      <button class="login-btn">Log In</button>
+      <a href="#" class="forgot">Forgot password?</a>
+    </div>
+
+    <!-- Sign Up Card -->
+    <div class="card signup">
+      <h1>SIGN UP</h1>
+      <input type="text" placeholder="Username">
+      <input type="email" placeholder="E-Mail">
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+      <button class="signup-btn">CREATE ACCOUNT</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>flex box</title>
+        <style>
+            .box{
+                width: 150px;
+                height: 150px;
+                border: 2px solid red;
+                background-color: aqua;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 90px;
+            }
+            #box1{
+        background-color: aqua;
+    }
+    #box2{
+        align-self:flex-start;
+        background-color: aquamarine;
+    }
+    #box3{
+        background-color: chartreuse;
+    }
+    #box4{
+        background-color: darkmagenta;
+    }
+            .container{
+                display: grid;
+                grid-template-columns: 100px 100px;
+                grid-template-rows: auto;
+               row-gap: 200px;
+               column-gap: 250px;
+                overflow: hidden;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div  class="box" id="box1">1</div>
+            <div  class="box" id="box2">2</div>
+            <div  class="box" id="box3">3</div>
+            <div  class="box" id="box4">4</div>
+            <div  class="box" id="box1">1</div>
+            <div  class="box" id="box2">2</div>
+            <div  class="box" id="box3">3</div>
+            <div  class="box" id="box4">4</div>
+
+        </div>
+    </body>
+</html>
