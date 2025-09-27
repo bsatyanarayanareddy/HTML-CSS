@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div{
+                border: 2px solid black;
+
+            }
+            img{
+                width: 300px;
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img src="https://imgs.search.brave.com/iHux7XsH7UBNuLj3YhiF0SasgpkxHwM9YWEhPK3vHBY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTI5/OTY1NTQ1Mi9waG90/by9zYW1zdW5nLWdh/bGF4eS1zMjEtc3Rh/cnR1cC1zY3JlZW4u/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PU40V1RPek5ZZVpx/UmVRNGVPQWhFU3Y1/NjZoM2xOTzNlbVhX/ODVHdjdxVFU9" alt="samsung phone">
+            <h1>samsung s1 galaxy pro</h1>
+            <h1>Rs:10,000</h1>
+            <button id='button' onclick="action()">Buy Now</button><br>
+            <button id="demo" style="display:none;">go to cart</button>
+            <span id="quan" style="display: none;"><span>Quantity:</span><button id="minus" onclick="minus()">-</button><span id="quantity"></span><button id="plus" onclick="plus()">+</button></span>
+
+        </div>
+        <script>
+            function action(){
+            document.getElementById("button").style.display = "none";
+            document.getElementById("demo").style.display = "block";
+            document.getElementById("quan").style.display = "block";
+        }
+        let quantity = 1;
+        document.getElementById("quantity").innerText = quantity;
+        function plus(){
+            quantity++;
+            if(quantity < 6){
+                document.getElementById("minus").style.display = "inline";
+            }
+            document.getElementById("quantity").innerText = quantity;
+        }
+        function minus(){
+            if(quantity > 1){
+                quantity--;
+                document.getElementById("quantity").innerText = quantity;
+            }
+            else{
+                document.getElementById("quantity").style.display = "none";
+            }
+        }
+        </script>
+    </body>
+</html>
