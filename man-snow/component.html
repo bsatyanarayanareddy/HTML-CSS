@@ -31,19 +31,25 @@
         let quantity = 1;
         document.getElementById("quantity").innerText = quantity;
         function plus(){
-            quantity++;
             if(quantity < 6){
-                document.getElementById("minus").style.display = "inline";
-            }
-            document.getElementById("quantity").innerText = quantity;
-        }
-        function minus(){
-            if(quantity > 1){
-                quantity--;
+                quantity++;
                 document.getElementById("quantity").innerText = quantity;
             }
             else{
-                document.getElementById("quantity").style.display = "none";
+                console.log("quantity cannot be greater then 6");
+
+            }
+        }
+        function minus(){
+           
+            if(quantity > 1){
+                quantity--;
+                document.getElementById("quantity").innerText = quantity;
+                document.getElementById("button").style.display = "inline";
+                document.getElementById("demo").style.display = "none";
+            }
+            else{
+                document.getElementById("quan").style.display = "none";
             }
         }
         </script>
