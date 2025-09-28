@@ -1,0 +1,24 @@
+<!-- #region -->
+ <!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <img id= 'demo' src="https://tse3.mm.bing.net/th/id/OIP.MInViflWTn0CIsOU3esbLwHaE5?pid=Api&P=0&h=180" alt="">
+        <button onclick="change()">click me </button>
+        <script>
+            let x =1;
+            function change(){
+                if(x==1){
+                    document.getElementById("demo").src="https://tse2.mm.bing.net/th/id/OIP.7cRYFyLoDEDh4sRtM73vvwHaDg?pid=Api&P=0&h=180"
+                    x=0;
+                }
+                else{
+                    document.getElementById("demo").src="https://tse3.mm.bing.net/th/id/OIP.MInViflWTn0CIsOU3esbLwHaE5?pid=Api&P=0&h=180"
+                    x=1;
+                }
+            }
+        </script>
+    </body>
+</html>
