@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document Object Model</title>
+        <style>
+            body{
+              display: flex;
+              column-gap: 5px;
+                
+            }
+            .main{
+                width: 50%;
+                border: 2px solid black;
+                height: 700px;
+            }
+            .first{
+                padding-left: 300px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+            }
+            ol{
+                list-style: none;
+                display: flex;
+                column-gap: 20px;
+                font-size: 25px;
+            }
+            li{
+                background-color: aqua;
+                border-radius: 7px;
+                text-align: center;
+                width: 100px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body >
+        <div class="main first" >
+            <div style="margin-bottom: 30px;">
+                <ol>
+                    <li>log in</li>
+                    <li>sign up</li>
+                </ol>
+            </div>
+            <div>
+                <form action="">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username">
+                    <br><br>
+                    <label for="phone">phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                    <br><br><label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    <br><br>
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                    <br><br>
+                    <input type="submit" value="Log in">
+                    <br><br>
+                    <a href="#">Forgot password?</a>
+                </form>
+            </div>
+        </div>
+        <div class="main">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.Cu0mX4k9bX4JH5YHjYH6mAHaE8?pid=Api&P=0&h=180" alt="">
+            <input type="text" name="" id=""><br>
+            <input type="date" name="" id=""><br>
+            <input type="time" name="" id=""><br>
+            <input type="file" name="" id=""><br>
+            <input type="color" name="" id=""><br>
+            <input type="range" name="" id="" min="20" max="50"><br>
+            <input type="number" name="" id="" min="1" max="10"><br>
+            <select name="" id="" multiple>
+                <option value="">1</option>
+                <option value="">2</option>
+            </select>
+            <input type="image" src="https://tse1.mm.bing.net/th/id/OIP.Cu0mX4k9bX4JH5YHjYH6mAHaE8?pid=Api&P=0&h=180" alt=""><br>
+            <input type="textarea" name="" id="" cols="30" rows="10" size="10"><br>
+        </div>
+    </body>
+</html>
