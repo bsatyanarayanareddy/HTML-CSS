@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="click()">click me</button>
+        <button onclick="change()">change background</button>
+    </body>
+    <script>
+        
+        function click(){
+            const w = new Worker('worker.js');
+            w.postMessage('Hello World from main thread');
+            
+            
+        }
+        function change(){
+            if( document.body.style.backgroundColor == "aqua")
+                document.body.style.backgroundColor = "lightgreen";
+            else
+            document.body.style.backgroundColor = "aqua";
+        }
+    </script>
+</html>

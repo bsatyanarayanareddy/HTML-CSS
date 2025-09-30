@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id = 'box' style="width: 200px; height:200px ; border:2px solid black"></div>
+        <script>
+            function changeColor(){
+                const colors = ['aqua', 'lightgreen', 'lightpink', 'lightgray', 'lightyellow'];
+                const box = document.getElementById('box');
+                for(let i=0;i<colors.length;i++){
+                    setTimeout(()=>{
+                        box.style.backgroundColor = colors[i];
+                    },i*1000);
+                }
+            }
+            setInterval(changeColor, 5000);
+            
+        </script>
+    </body>
+</html>
