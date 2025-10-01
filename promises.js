@@ -12,7 +12,7 @@ add(x =>{console.log(x)});
 */
 
 //promise()
-let p = new Promise((resolve, reject) => {
+/*let p = new Promise((resolve, reject) => {
     let x = 1;
     if(x == 0) {
         resolve("Success");
@@ -27,3 +27,15 @@ p.then((message) => {
 }).catch((error) => {
     console.log(error);
 });
+*/
+//fetch
+/*async function myFunction() {
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu/');
+    let data = await response.json();
+    console.log(data.);
+    
+}
+myFunction();
+*/
+fetch('https://pokeapi.co/api/v2/pokemon/pikachu/')
+.then(response => response.json().then(data => console.log(data.keys())));

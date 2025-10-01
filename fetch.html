@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p id="demo"></p>
+        <img  style="width:200px; height:200px; border:2px solid black; background-color : green" alt="pokemon image" id="img">
+        
+        <input type="text" name="pokemonName" id="poke" placeholder="Enter pokemon name">
+        <br><button onclick="fetchdata()">click</button>
+        <script>
+            async function fetchdata(){
+               
+                sessionStorage.setItem('sessionName', 'satti session');
+                sessionStorage.setItem('sessionAge', '21 session');
+                const pokeName = document.getElementById('poke').value.toLowerCase();
+                let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
+               // let response = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu/');
+                let data = await response.json();
+                const image = data.sprites.front_female;
+                document.getElementById('img').src=image;
+                console.log(data);
+            }
+        </script>
+    </body>
+</html>
