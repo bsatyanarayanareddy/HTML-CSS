@@ -42,7 +42,7 @@ console.log(typeof num);
 console.log(num.toString());
 console.log(num.toFixed(0));
 console.log(num.toExponential(2));*/
-const arr = [10, 20, 30, 40, 50];
+/*const arr = [10, 20, 30, 40, 50];
 const arr2 = [];
 const res= [];
 function myfun(value, index, array,arr2) {
@@ -53,4 +53,74 @@ function myfun(value, index, array,arr2) {
     }
 
 }
+const text = `[
+  {
+    "name": "France",
+    "capital": "Paris",
+    "population": 67364357,
+    "area": 551695,
+    "currency": "Euro",
+    "languages": [
+      "French"
+    ],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"
+  },
+  {
+    "name": "Germany",
+    "capital": "Berlin",
+    "population": 83240525,
+    "area": 357022,
+    "currency": "Euro",
+    "languages": [
+      "German"
+    ],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"
+  },
+  {
+    "name": "United States",
+    "capital": "Washington, D.C.",
+    "population": 331893745,
+    "area": 9833517,
+    "currency": "USD",
+    "languages": [
+      "English"
+    ],
+    "region": "Americas",
+    "subregion": "Northern America",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg"
+  },
+  {
+    "name": "Belgium",
+    "capital": "Brussels",
+    "population": 11589623,
+    "area": 30528,
+    "currency": "Euro",
+    "languages": [
+      "Flemish",
+      "French",
+      "German"
+    ],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg"
+  }
+]`;
+const obj = JSON.parse(text);
+console.log(typeof obj);
+console.log( Array.isArray(obj));
+for(let x in obj){
+  for(let y in obj[x]){
+    console.log(obj[x][y]);
+}
+}*/
+
+const arr = ["10", 20, 30, 40, 50];
+const myjson  = JSON.stringify(arr);
+console.log(myjson);
+
+
 
