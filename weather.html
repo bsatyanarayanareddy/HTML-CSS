@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: lightblue;
+                border: 0px;
+                border-radius: 5px;
+                padding: 10px;  
+                width: 100%;
+                height: 40px;
+            }
+            .title{
+                margin-left: 30px;
+            }
+            .search{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-right: 30px;
+            }
+            .search-box{
+                margin-right: 10px;
+            }
+            .search_icon{
+                width: 20px;
+                height: 20px;
+                border: 0px;
+                border-radius:50% ;
+            }
+            .main{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 50px;
+            }
+            .main img{
+                border: 0px;
+                border-radius: 50px;
+            }   
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="title"><h1>Weather response</h1></div>
+            <div class="search">
+            <div class="search-box"><input type="text" name="search-box" id="city_name" placeholder="enter city name"></div>
+            <div><button onclick="getWeather()"><img src="search_icon.jpeg" alt="searchicon" class="search_icon"></button></div></div>
+        </div>
+        <div class="main">
+            <div class="temperature">
+                <div><img src="temperature.jpeg" alt=""></div>
+                <div><h2 id="temprature">temprature Loading... </h2></div>
+            </div>
+            <div class="humidity">
+                <div><img src="humidity.jpeg" alt=""></div>
+                <div><h2 id="humidity" >humidity Loading...</h2></div>
+            </div>
+            <div class="wind">
+                <div><img src="wind.png" alt=""></div>
+                <div><h2 id="wind">wind Loading...</h2></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function getWeather(){
+            let temp;
+            let city = document.getElementById("city_name").value;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3532f2ebc0717143c86628de4faaa8d7
+`).then(response => response.json())
+.then(data => {console.log(data);
+            temp = data.main.temp - 273.15;
+            humidity = data.main.humidity;
+            wind = data.wind.speed;
+            document.getElementById("temprature").innerHTML = temp.toFixed(2) + " °C"
+            document.getElementById("humidity").innerHTML = humidity + " %" 
+            document.getElementById("wind").innerHTML = wind + " m/s"})
+            .catch(err => window.alert("City not found"));
+        }
+    </script>
+</html>

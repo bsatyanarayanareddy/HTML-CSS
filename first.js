@@ -116,11 +116,17 @@ for(let x in obj){
   for(let y in obj[x]){
     console.log(obj[x][y]);
 }
-}*/
+}
 
 const arr = ["10", 20, 30, 40, 50];
 const myjson  = JSON.stringify(arr);
 console.log(myjson);
+*/
 
+function displayDate(){
+  let date  = new Date();
+  console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
+}
+setInterval(displayDate,1000);
 
 

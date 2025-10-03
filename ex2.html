@@ -1,13 +1,489 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Animation - Surface to Underwater</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-        <form action="abc">
-            <label for="name">Name:</label><input type="text" name="firstname" id="name" required>
-            <input type="submit" name="" id="">
-        </form>
-    </body>
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(to bottom, #87CEEB 0%, #4A90E2 50%, #2E5C8A 100%);
+            transition: all 1.5s ease;
+            cursor: pointer;
+        }
+
+        .container.underwater {
+            background: linear-gradient(to bottom, #0A3D62 0%, #1e5f8c 30%, #0c2d48 100%);
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 50%;
+            top: 50px;
+            right: 100px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+            transition: all 1.5s ease;
+        }
+
+        .container.underwater .sun {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+
+        /* Waves */
+        .waves {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            transition: all 1.5s ease;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%232E5C8A"/></svg>');
+            background-size: 50% 100%;
+            animation: wave-animation 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        .wave:nth-child(2) {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,30 Q300,80 600,30 T1200,30 L1200,120 L0,120 Z" fill="%234A90E2"/></svg>');
+            background-size: 50% 100%;
+            animation: wave-animation 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        .container.underwater .waves {
+            opacity: 0;
+            transform: translateY(200px);
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Fish (Surface) */
+        .fish {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            transition: all 1.5s ease;
+        }
+
+        .fish::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 25px;
+            background: #FF6B35;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: inset -5px -3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .fish::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 25px solid #FF8C5A;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .fish1 {
+            top: 30%;
+            left: 10%;
+            animation: swim1 6s ease-in-out infinite;
+        }
+
+        .fish2 {
+            top: 50%;
+            right: 20%;
+            animation: swim2 8s ease-in-out infinite;
+            transform: scaleX(-1);
+        }
+
+        .fish3 {
+            top: 25%;
+            left: 60%;
+            animation: swim3 7s ease-in-out infinite;
+        }
+
+        @keyframes swim1 {
+            0%, 100% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(100px) translateY(-20px);
+            }
+        }
+
+        @keyframes swim2 {
+            0%, 100% {
+                transform: scaleX(-1) translateX(0) translateY(0);
+            }
+            50% {
+                transform: scaleX(-1) translateX(80px) translateY(30px);
+            }
+        }
+
+        @keyframes swim3 {
+            0%, 100% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(-120px) translateY(15px);
+            }
+        }
+
+        /* Underwater Scene */
+        .underwater-scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            pointer-events: none;
+        }
+
+        .container.underwater .underwater-scene {
+            opacity: 1;
+        }
+
+        /* Bubbles */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+            border-radius: 50%;
+            animation: rise 4s ease-in infinite;
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 15px;
+            height: 15px;
+            animation-duration: 3s;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            left: 25%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(3) {
+            left: 45%;
+            width: 18px;
+            height: 18px;
+            animation-duration: 4s;
+            animation-delay: 0.5s;
+        }
+
+        .bubble:nth-child(4) {
+            left: 65%;
+            width: 22px;
+            height: 22px;
+            animation-duration: 4.5s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(5) {
+            left: 85%;
+            width: 16px;
+            height: 16px;
+            animation-duration: 3.5s;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -50px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+
+        /* Seaweed */
+        .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 150px;
+            background: linear-gradient(to top, #2d5016, #4a7c2c);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        .seaweed:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        .seaweed1 {
+            left: 15%;
+            height: 120px;
+        }
+
+        .seaweed2 {
+            left: 35%;
+            height: 180px;
+            animation-duration: 3.5s;
+        }
+
+        .seaweed3 {
+            left: 55%;
+            height: 140px;
+        }
+
+        .seaweed4 {
+            left: 75%;
+            height: 160px;
+            animation-duration: 2.8s;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Underwater Fish */
+        .underwater-fish {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+        }
+
+        .underwater-fish::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 35px;
+            background: #00CED1;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: inset -5px -3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .underwater-fish::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 30px solid #20B2AA;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+        }
+
+        .ufish1 {
+            top: 20%;
+            left: -100px;
+            animation: swim-right 10s linear infinite;
+        }
+
+        .ufish2 {
+            top: 40%;
+            right: -100px;
+            animation: swim-left 12s linear infinite;
+            transform: scaleX(-1);
+        }
+
+        .ufish3 {
+            top: 60%;
+            left: -100px;
+            animation: swim-right 11s linear infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes swim-right {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: 110%;
+            }
+        }
+
+        @keyframes swim-left {
+            0% {
+                right: -100px;
+            }
+            100% {
+                right: 110%;
+            }
+        }
+
+        /* Coral */
+        .coral {
+            position: absolute;
+            bottom: 0;
+            width: 60px;
+            height: 80px;
+            background: #FF6B9D;
+            border-radius: 50% 50% 0 0;
+            opacity: 0.8;
+        }
+
+        .coral::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: #FF8FAB;
+            border-radius: 50% 50% 0 0;
+            left: -20px;
+            bottom: 0;
+        }
+
+        .coral::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 50px;
+            background: #FFA5C0;
+            border-radius: 50% 50% 0 0;
+            right: -15px;
+            bottom: 0;
+        }
+
+        .coral1 {
+            left: 8%;
+            height: 70px;
+        }
+
+        .coral2 {
+            right: 12%;
+            height: 90px;
+        }
+
+        /* Click Instruction */
+        .instruction {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 24px;
+            color: #2E5C8A;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+
+        .container.underwater .instruction {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="ocean">
+        <!-- Sun -->
+        <div class="sun"></div>
+
+        <!-- Instruction -->
+        <div class="instruction">Click to dive underwater!</div>
+
+        <!-- Waves -->
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+        <!-- Surface Fish -->
+        <div class="fish fish1"></div>
+        <div class="fish fish2"></div>
+        <div class="fish fish3"></div>
+
+        <!-- Underwater Scene -->
+        <div class="underwater-scene">
+            <!-- Bubbles -->
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+
+            <!-- Seaweed -->
+            <div class="seaweed seaweed1"></div>
+            <div class="seaweed seaweed2"></div>
+            <div class="seaweed seaweed3"></div>
+            <div class="seaweed seaweed4"></div>
+
+            <!-- Underwater Fish -->
+            <div class="underwater-fish ufish1"></div>
+            <div class="underwater-fish ufish2"></div>
+            <div class="underwater-fish ufish3"></div>
+
+            <!-- Coral -->
+            <div class="coral coral1"></div>
+            <div class="coral coral2"></div>
+        </div>
+    </div>
+
+    <script>
+        const ocean = document.getElementById('ocean');
+        
+        ocean.addEventListener('click', function() {
+            ocean.classList.toggle('underwater');
+        });
+    </script>
+</body>
 </html>
