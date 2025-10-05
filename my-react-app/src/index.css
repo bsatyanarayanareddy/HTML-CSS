@@ -1,0 +1,9 @@
+.box{
+  width:200px;
+  height: 200px;
+  border: 2px solid rgb(182, 179, 179);
+  box-shadow: 2px 2px ;
+  text-align: center ;
+  align-content: center;
+
+}

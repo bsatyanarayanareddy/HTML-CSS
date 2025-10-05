@@ -24,12 +24,17 @@
             }
             .search-box{
                 margin-right: 10px;
+                position: relative;
+                width: 100%;
             }
             .search_icon{
                 width: 20px;
                 height: 20px;
                 border: 0px;
-                border-radius:50% ;
+                position: absolute;
+                top: 1px;
+                right: 2px;
+                border-radius: 50%;
             }
             .main{
                 display: flex;
@@ -39,16 +44,37 @@
             }
             .main img{
                 border: 0px;
-                border-radius: 50px;
+                border-radius: 20px;
             }   
+            .last{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                background-color: blue;
+                color: white;
+                border: 0px;
+                border-radius: 5px;
+                height: 80px;
+            }
+            .button{
+                border: 0px;
+                background-color: lightblue;
+                cursor: pointer;
+            }
+            div h2{
+                margin-left: 10px;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
         <div class="header">
             <div class="title"><h1>Weather response</h1></div>
             <div class="search">
-            <div class="search-box"><input type="text" name="search-box" id="city_name" placeholder="enter city name"></div>
-            <div><button onclick="getWeather()"><img src="search_icon.jpeg" alt="searchicon" class="search_icon"></button></div></div>
+            <div class="search-box"><input type="text" name="search-box" id="city_name" placeholder="enter city name">
+            <div><button onclick="getWeather()" class="button"><img src="search_icon.jpeg" alt="searchicon" class="search_icon"></button></div></div>
+        </div>
         </div>
         <div class="main">
             <div class="temperature">
@@ -64,6 +90,7 @@
                 <div><h2 id="wind">wind Loading...</h2></div>
             </div>
         </div>
+        <div class="last"><h1 > city</h1></div>
     </body>
     <script>
         function getWeather(){
@@ -75,9 +102,11 @@
             temp = data.main.temp - 273.15;
             humidity = data.main.humidity;
             wind = data.wind.speed;
+            document.getElementById('city_name').value = "";
             document.getElementById("temprature").innerHTML = temp.toFixed(2) + " °C"
             document.getElementById("humidity").innerHTML = humidity + " %" 
-            document.getElementById("wind").innerHTML = wind + " m/s"})
+            document.getElementById("wind").innerHTML = wind + " m/s"
+            document.querySelector(".last h1").innerHTML = city;})
             .catch(err => window.alert("City not found"));
         }
     </script>
