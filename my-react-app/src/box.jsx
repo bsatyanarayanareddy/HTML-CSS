@@ -1,19 +1,12 @@
-
-
+import React,{useState} from "react";
 function Box() {
-    return (
-        <div className="box">
-            Box
-        </div>
-
-    );
+    const [text,setText]=useState("satya");
+    function callback(event){
+        setText(event.target.value);
+    }
+  return <div className="Box">
+    <input type="text" placeholder="Enter some text here" value={text} onChange={callback}/>
+    <p>you entered :{text}</p>
+    </div>;
 }
-function Rat(){
-    return (
-        <div className="rat">
-            Rat
-        </div>
-    );
-}
-export {Rat};
 export default Box;

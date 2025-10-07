@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .root{
+                position :absolute;
+                background-color: lightblue;
+                width: 130px;
+                height: 100px;
+            }
+            .ellipse {
+                width: 100px;
+                height: 50px;
+                border-radius: 50%;
+                border: 2px solid black;
+            }
+            .first {
+                border: 2px solid red;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+            .second {
+                border: 2px solid green;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                transform: rotate(-45deg);
+            }
+            .third {
+                border: 2px solid blue;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                transform: rotate(45deg);
+            }
+            .dot{
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                background-color: black;
+                position :relative;
+                top: 38px;
+                left: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="root">
+            <div class="first ellipse"></div>
+            <div class="second ellipse"></div>
+            <div class="third ellipse"></div>
+            <div class="dot"></div>
+        </div>
+    </body>
+</html>
