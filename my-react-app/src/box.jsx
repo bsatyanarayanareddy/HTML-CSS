@@ -9,3 +9,11 @@ export default function Box(props){
         </div>
     );
 }
+export function Box1(){
+    console.log("box1");
+  return (
+    <div>
+        my name is box1
+    </div>
+  )
+}
